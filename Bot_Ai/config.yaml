@@ -1,0 +1,71 @@
+gd_path: "C:/Users/GG/Desktop/Geometry Dash/GeometryDash.exe"
+
+window:
+  title: "Geometry Dash"
+  title_alt: "GeometryDash"
+  resolution: [800, 600]
+  fullscreen: false
+
+screen:
+  capture_region: [0, 0, 800, 600]
+  gameplay_region: [0, 35, 800, 530]
+  crop_to_gameplay: true
+
+preprocessing:
+  resize_width: 84
+  resize_height: 84
+  frame_stack: 4
+  grayscale: true
+
+action_repeat: 1
+fps: 144
+
+training:
+  total_episodes: 10000
+  max_steps_per_episode: 40000
+  batch_size: 32
+  replay_buffer_size: 100000
+  learning_rate: 0.0001
+  gamma: 0.99
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 0.995
+  target_update_freq: 1000
+  save_freq: 500
+  log_freq: 100
+  model_save_path: "models/dqn_gd.pth"
+  tensorboard: true
+
+reward:
+  death_penalty: -5.0
+  progress_scale: 5.0
+  jump_penalty: -0.02
+  alive_bonus: 0.01
+  time_penalty: -0.001
+
+death_detection:
+  method: "combo"
+  death_pixel_pos: [400, 300]
+  death_threshold: 200
+  dark_threshold: 30
+
+progress_detection:
+  method: "pixel"
+  bar_region: [0, 580, 800, 600]
+  sample_pixels: 20
+
+memory:
+  process_name: "GeometryDash.exe"
+  attempts_offsets: []
+  progress_offsets: []
+  refresh_interval: 0.5
+
+monitor:
+  enabled: true
+  window_width: 350
+  window_height: 250
+  always_on_top: true
+  update_interval_ms: 1000
+
+effects:
+  resources_path: "C:/Users/GG/Desktop/Geometry Dash/Resources"
